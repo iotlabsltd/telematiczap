@@ -13,19 +13,24 @@ To start the project, simply type:
 python manage.py runserver
 ```
 
+$~$
 
-## Feature: administration panel  
+# Feature: administration panel  
 `http://localhost:8000/admin`
 
 
-## Feature: register client applications to use data on TelematicZap
+$~$
+
+# Feature: register client applications to use data on TelematicZap
 TelematicZap provides the interface of an OAuth 2 Server.  
 Client applications can access data from TelematicZap on behalf of authenticated users.  
 Users can see their registered applications here:  
 
 `http://localhost:8000/o/applications/`
 
-### 1. Register a new client application
+$~$
+
+## 1. Register a new client application
 To register a new application, a user must navigate to:  
 `http://localhost:8000/o/applications/register/`
 
@@ -34,8 +39,9 @@ You should have something like the following:
 `<CLIENT-SECRET>: 4i6KeMoNrlu71EUKPbLmjLtNwLZ98h46L0GglZp9pXxnEEkMhkt5x457dghZsvUcU4oShpVay1qYfJLLoWoh3agbZjecvJHsOMvqAXctX6ro0NuTxX92uf5zgSwOSHT9`  
 `<REDIRECT-URI>: http://localhost:8000/noexist/callback`  
 
+$~$
 
-### 2. Start the Authorization code flow
+## 2. Start the Authorization code flow
 `http://localhost:8000/o/authorize/?response_type=code&client_id=<CLIENT-ID>&redirect_uri=<REDIRECT-ID>`
 
 Which should return us the AUTH-CODE by redirecting:
@@ -61,10 +67,23 @@ which returns
 
 You are now ready to make requests to TelematicZap on behalf of a user.
 
+$~$
 
-### 3. Access the resources (client application)
+## 3. Access the resources (client application)
 ```
 curl \
     -H "Authorization: Bearer <ACCESS-TOKEN>" \
     -X GET http://localhost:8000/api/hello
 ```
+
+$~$
+
+# MIT License
+
+Copyright 2021 Konetik Deutschland GmbH
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
