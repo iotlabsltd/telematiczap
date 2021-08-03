@@ -13,7 +13,7 @@ To start the project, simply type:
 python manage.py runserver
 ```
   
-To access the administration panel type:
+To access the administration panel, navigate to:
 
 `http://localhost:8000/admin`
 
