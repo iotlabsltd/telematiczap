@@ -8,14 +8,17 @@ python manage.py runserver
 ## Administration panel
 http://localhost:8000/admin
 
-## OAuth 2 Provider: How to register client applications to use data on TelematicZap
-We can see the applications registered here:  
+# How to register client applications to use data on TelematicZap
+TelematicZap provides the interface of an OAuth 2 Server.  
+Client applications can access data from TelematicZap on behalf of authenticated users.  
+Users can see their registered applications here:  
 
 http://localhost:8000/o/applications/
 ### 1. Register a new client application
+To register a new application, a user must navigate to:  
 http://localhost:8000/o/applications/register/
 
-You should have something like:  
+You should have something like the following:  
 <CLIENT-ID>: JJTqjC4kqnwQOCgH7L4vm3bQoD6gAWFHGdzshzrD  
 <CLIENT-SECRET>: 4i6KeMoNrlu71EUKPbLmjLtNwLZ98h46L0GglZp9pXxnEEkMhkt5x457dghZsvUcU4oShpVay1qYfJLLoWoh3agbZjecvJHsOMvqAXctX6ro0NuTxX92uf5zgSwOSHT9  
 <REDIRECT-URI>: http://localhost:8000/noexist/callback
@@ -39,6 +42,8 @@ curl -X POST \
 
 which returns  
 {"access_token": "<ACCESS-TOKEN>", "expires_in": 36000, "token_type": "Bearer", "scope": "read write", "refresh_token": "<REFRESH-TOKEN>"}
+
+You are now ready to make requests to TelematicZap on behalf of a user.
 
 ### 3. Access the resources (client application)
 curl \
