@@ -11,9 +11,10 @@ def transform_dataframe(dataframe: pd.DataFrame, example_dataframe=None, example
     Translate and transform a dataframe given an example for the new schema.    
     
     Args:
-        dataframe (pd.DataFrame): the dataframe to transform
-        example_dataframe (pd.DataFrame): an exemplar dataframe
-        columns (list): the columns to keep
+        dataframe (pd.DataFrame): the dataframe to transform to a new format
+        example_dataframe (pd.DataFrame): a dataframe with the format we want to have
+        example_columns (list): a list of column names most similar to keep 
+            (example_columns only works when example_dataframe = None)
     
     Returns:
         Dataframe translated and transformed, according to example_dataframe.

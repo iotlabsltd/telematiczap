@@ -30,6 +30,8 @@ def find_column(dataframe: pd.DataFrame, example_column: pd.Series, min_similari
     Args:
         dataframe: The dataframe to search
         example_column: The example of a column schema to search for
+        min_similarity: The minimum similarity to consider
+        rename: If true (default), rename the found column to the name of the example column
     
     Returns:
         The column found that is most similar to the example_column
@@ -70,6 +72,8 @@ def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, min
     Args:
         dataframe: The dataframe to search
         example_dataframe: An example of the data to search for
+        min_similarity: The minimum similarity to consider
+        rename: If true (default), rename the found columns to the name of the example columns
     
     Returns:
         The dataframe found, using the same schema as example_dataframe
@@ -144,9 +148,10 @@ def find_dataframe_by_colnames(dataframe: pd.DataFrame, column_names, min_simila
     Args:
         dataframe: The dataframe to search
         column_names: An example of the column names to search for
+        min_similarity: The minimum similarity to consider
     
     Returns:
-        The columns found whose names are most similar to the column_names
+        The dataframe whose columns names' are most similar to the column_names
     """
     # initialize the output_dataframe
     output_dataframe = pd.DataFrame(columns=column_names)
