@@ -12,14 +12,15 @@ To start the project, simply type:
 ```
 python manage.py runserver
 ```
-
-$~$
+  
+  
 
 # Feature: administration panel  
 `http://localhost:8000/admin`
 
 
-$~$
+  
+  
 
 # Feature: register client applications to use data on TelematicZap
 TelematicZap provides the interface of an OAuth 2 Server.  
@@ -28,7 +29,8 @@ Users can see their registered applications here:
 
 `http://localhost:8000/o/applications/`
 
-$~$
+  
+  
 
 ## 1. Register a new client application
 To register a new application, a user must navigate to:  
@@ -39,7 +41,8 @@ You should have something like the following:
 `<CLIENT-SECRET>: 4i6KeMoNrlu71EUKPbLmjLtNwLZ98h46L0GglZp9pXxnEEkMhkt5x457dghZsvUcU4oShpVay1qYfJLLoWoh3agbZjecvJHsOMvqAXctX6ro0NuTxX92uf5zgSwOSHT9`  
 `<REDIRECT-URI>: http://localhost:8000/noexist/callback`  
 
-$~$
+  
+  
 
 ## 2. Start the Authorization code flow
 `http://localhost:8000/o/authorize/?response_type=code&client_id=<CLIENT-ID>&redirect_uri=<REDIRECT-ID>`
@@ -67,7 +70,8 @@ which returns
 
 You are now ready to make requests to TelematicZap on behalf of a user.
 
-$~$
+  
+  
 
 ## 3. Access the resources (client application)
 ```
@@ -76,7 +80,8 @@ curl \
     -X GET http://localhost:8000/api/hello
 ```
 
-$~$
+  
+  
 
 # MIT License
 
