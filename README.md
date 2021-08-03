@@ -13,16 +13,14 @@ To start the project, simply type:
 python manage.py runserver
 ```
   
-  
+To access the administration panel type:
 
-# Feature: administration panel  
 `http://localhost:8000/admin`
 
-
   
   
 
-# Feature: register client applications to use data on TelematicZap
+# Register client applications to use data on TelematicZap
 TelematicZap provides the interface of an OAuth 2 Server.  
 Client applications can access data from TelematicZap on behalf of authenticated users.  
 Users can see their registered applications here:  
