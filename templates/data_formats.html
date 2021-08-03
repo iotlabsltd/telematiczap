@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container p-5">
+    <h1>Data formats</h1>
+    <h4>Data formats brief description</h4>
+    <br>
+    
+    <div class="col-lg-6 col-md-8 mx-auto">
+        {% load crispy_forms_tags %}
+        {% crispy form %}
+    </div>
+</div>
+
+{% endblock %}
