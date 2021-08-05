@@ -50,10 +50,12 @@ urlpatterns = [
     path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/hello', views.ApiEndpoint.as_view()),  # an example resource endpoint
+    #path('api', views),  # an example resource endpoint
     path("", views.HomeFormView.as_view(), name="home"),
     path("contact", views.ContactFormView.as_view(), name="contact"),
+    path("login", views.UserLoginFormView.as_view(), name="login"),
+    path("signup", views.RegisterFormView.as_view(), name="signup"),
     path('', include('django.contrib.auth.urls')),
-    path("register", views.RegisterFormView.as_view(), name="register"),
     path("data-before", views.DataBeforeList.as_view(), name="data-before"),
     path("data-before/<pk>", views.DataBeforeRUD.as_view()),
     path("data-after", views.DataAfterList.as_view(), name="data-after"),

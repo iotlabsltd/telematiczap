@@ -28,13 +28,8 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="#">Contact</a></li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signup">SIGN UP</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">LOGIN</a></li>
-                    {% else %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">CONTACT</a></li>
-                    {% endif %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">LOGIN</a></li>
                     <li class="nav-item"></li>
                 </ul>
             </div>
@@ -43,15 +38,20 @@
     <header class="masthead" style="background: url('{% static 'img/bg-pattern.png' %}'), linear-gradient(to left, #7b4397, #dc2430);height: 100%;padding-top: 100px;">
         <!-- Start: Registration Form Clean -->
         <section class="login-clean" style="background: rgba(241,247,252,0);padding-top: 0px;font-size: 12px;">
-            <form method="post" style="min-width: 450px;">
+            <form method="post" style='min-width: 380px;'>
                 {%csrf_token%}
-                <h2 class="text-center" style="font-size: 24px;"><strong>Contact us</strong><br></h2>
-                <h4 class="text-center" style="margin-bottom: 20px;">Let us help you</h4>
-               
-                <div class="form-group"><input class="form-control" type="email" name="email" required id="id_email" placeholder="Email"></div>
-                <div class="form-group"><textarea name="message" requied id="id_message" class="form-control" style="height: 160px;"></textarea></div>
-               
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send message</button></div>
+                <h2 class="text-center" style="font-size: 24px;padding-bottom: 18px;"><strong>Create</strong> an account.</h2>
+                {{form|crispy}}
+                <!-- 
+                <div class="form-group"><input class="form-control" type="username" name="username" placeholder="Username"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
+                -->
+                <div class="form-group">
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
+                </div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="forgot" href="/login">You already have an account? Login here.</a>
             </form>
         </section><!-- End: Registration Form Clean -->
     </header>

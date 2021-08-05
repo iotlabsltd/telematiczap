@@ -35,16 +35,33 @@ class HomeFormView(FormView):
     success_url = '/'
 
     def form_valid(self, form):
+        print('transform!')
         valid = super().form_valid(form)
         if valid:
+            # get data before and format
             data_before_path = form.files['data_before'].temporary_file_path()
             data_format_path = form.files['data_format'].temporary_file_path()
+            # get path and format type
             data_format_type = data_format_path.split('.')[-1]
             tmp_output_filename = 'data_after.'+data_format_type
             tmp_output_path = '/tmp/'+tmp_output_filename
-            transform(input_file=data_before_path, output_file=tmp_output_path, output_example_file=data_format_path)
-            response = HttpResponse(tmp_output_path, content_type='text/csv')
+            # transform
+            transform(input_file=data_before_path, output_file=tmp_output_path, 
+                      output_example_file=data_format_path, limit_rows=100)
+            # get data after
+            with open(tmp_output_path, 'r') as f:
+                file_data = f.read()
+            # choose content type of response based on file type
+            filetype = data_format_type.lower()
+            if filetype == 'csv': content_type = 'text/csv'
+            elif filetype == 'xls': content_type = 'application/vnd.ms-excel'
+            elif filetype == 'xlsx': content_type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            elif filetype == 'json': content_type = 'application/json'
+            else: content_type = 'application/octet-stream'
+            # create response with file
+            response = HttpResponse(file_data, content_type=content_type)
             response['Content-Disposition'] = f'attachment; filename={tmp_output_filename}'
+            # return response
             return response
         else:
             return valid
@@ -85,7 +102,7 @@ class ContactFormView(FormView):
 
 
 class RegisterFormView(FormView):
-    template_name = 'registration/register.html'
+    template_name = 'registration/signup.html'
     form_class = UserRegisterForm
     success_url = '/'
 
