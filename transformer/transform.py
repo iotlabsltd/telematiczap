@@ -36,7 +36,8 @@ def transform_dataframe(dataframe: pd.DataFrame, example_dataframe=None, example
 
 
 def transform(input_file: str, output_file: str, output_example_file: str, 
-              read_kwargs={}, write_kwargs={}, example_kwargs={}, clues=None) -> None:
+              read_kwargs={}, write_kwargs={}, example_kwargs={}, clues=None,
+              limit_rows=None) -> None:
     """
     Transform a table into a new schema, and saves it as a new file.
 
@@ -47,6 +48,8 @@ def transform(input_file: str, output_file: str, output_example_file: str,
         **kwargs: any other arguments to pass to the pandas read function
     """
     dataframe = read_dataframe(input_file, **read_kwargs)
+    if limit_rows:
+        dataframe = dataframe.iloc[:limit_rows]
     example_dataframe = read_dataframe(output_example_file, **example_kwargs)
     transformed_dataframe = transform_dataframe(dataframe, example_dataframe)
     save_dataframe(transformed_dataframe, output_file, **write_kwargs)

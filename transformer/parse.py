@@ -2,7 +2,7 @@
 
 import numpy as np
 import pandas as pd
-from pathlib import Path
+import os
 import datefinder
 import re
 
@@ -181,8 +181,8 @@ def save_dataframe(dataframe: pd.DataFrame, filepath: str, **kwargs):
         filepath (str): path to the output file
         **kwargs: any other arguments to pass to the pandas save function
     """
-    folder_path = filepath.rsplit('/', 1)[0]
-    Path(folder_path).mkdir(parents=True, exist_ok=True)
+    # create the folders if they don't exist
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
     # saves the dataframe to a file based on the filetype
     if filepath.endswith('.csv'):
         dataframe.to_csv(filepath, index=False, **kwargs)
