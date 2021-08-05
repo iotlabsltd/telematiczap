@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import include, path
 import oauth2_provider.views as oauth2_views
 from django.conf import settings
-import main.views as views
+import zap.views as views
 from django.contrib import admin
 from django.conf.urls.static import static
 
@@ -62,7 +62,7 @@ urlpatterns = [
     path("data-after/<pk>", views.DataAfterRUD.as_view()),
     path("data-format", views.DataFormatList.as_view(), name="data-format"),
     path("data-format/<pk>", views.DataFormatRUD.as_view()),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG: 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

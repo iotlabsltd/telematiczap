@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%n#gb*%e^%81(m5r$57u-7n5)nb^$+bt3i*v5$5js38m$lj$60'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'ambient-net-322011.ey.r.appspot.com']
 
 
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'crispy_forms',
-    'main',
+    'zap',
 ]
 
 MIDDLEWARE = [
@@ -128,18 +128,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'
-#STATIC_ROOT = BASE_DIR / 'static'
+
+if not DEBUG:
+    STATIC_ROOT = BASE_DIR / 'static'
+
 STATICFILES_DIRS = (
-    BASE_DIR / 'static',    
+    BASE_DIR / 'zap' / 'static',    
 )
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Django OAuth Toolkit settings
-AUTH_USER_MODEL = 'main.User'
-LOGIN_URL = '/admin/login/'
+AUTH_USER_MODEL = 'zap.User'
+LOGIN_URL = '/login'
 CORS_ORIGIN_ALLOW_ALL = True
 #AUTHENTICATION_BACKENDS = (
 #    'oauth2_provider.backends.OAuth2Backend', # OAuth2
