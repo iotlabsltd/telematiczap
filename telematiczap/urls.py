@@ -45,7 +45,7 @@ if settings.DEBUG:
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('_a_/', admin.site.urls),
     #path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

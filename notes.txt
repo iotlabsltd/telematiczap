@@ -1,0 +1,22 @@
+sudo passwd $USER
+
+virtualenv --python python3 ~/envs/telematiczap
+
+source ~/envs/telematiczap/bin/activate
+
+pip install -r requirements.txt
+
+python manage.py makemigrations
+
+python manage.py migrate --run-syncdb
+
+python manage.py createsuperuser
+
+gunicorn -b :8000 main:app
+
+gcloud config set project ambient-net-322011
+
+gcloud app deploy
+
+gcloud app browse
+
