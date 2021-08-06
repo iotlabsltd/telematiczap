@@ -21,14 +21,14 @@
                             enctype="multipart/form-data">
                             <h2 class="text-center"><strong>Transform</strong> your data</h2>
                             {% csrf_token %}
-                            <label for="id_data_before">Data before:</label>
+                            <label for="id_data_before">Your Data in .csv .xls or .json:</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="data_before" required=""
                                     id="id_data_before">
                                 <label class="custom-file-label" for="id_data_before">Choose file...</label>
                             </div>
                             <p></p>
-                            <label for="id_data_format">Format example:</label>
+                            <label for="id_data_format">Example in .csv .xls or .json:</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="data_format" required=""
                                     id="id_data_format">
