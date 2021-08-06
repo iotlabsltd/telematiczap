@@ -30,7 +30,7 @@ class ApiEndpoint(ProtectedResourceView):
 
 
 class HomeFormView(FormView):
-    template_name = 'home.html'
+    template_name = 'index.html'
     form_class = HomeForm
     success_url = '/'
 

@@ -1,754 +1,115 @@
 {% load static %}
-{% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    {% if user.is_authenticated %}
-    <title>Dashboard - TelematicZap</title>
-    {% else %}
-    <title>Home - TelematicZap</title>
-    {% endif %}
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asul">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
-    <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
-</head>
-
-<body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+<header class="masthead"
+    style="background:url('{% static 'img/bg-pattern.png' %}'), linear-gradient(to left, #7b4397, #dc2430);height:100%;">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-lg-7 my-auto">
+                <div class="mx-auto header-content">
+                    <h1 class="mb-5">Auto-transform <br>your data from one format to another.<br></h1><a
+                        class="btn btn-outline-warning btn-xl js-scroll-trigger" role="button" href="/signup">Start
+                        Now for Free!</a>
+                </div>
+            </div>
+            <div class="col-lg-5 my-auto">
+                <!-- Start: Registration Form with Photo -->
+                <section class="register-photo"
+                    style="padding-top: 25px;padding-bottom: 25px;background: rgba(241,247,252,0.1);">
+                    <!-- Start: Form Container -->
+                    <div class="form-container">
+                        <form method="post" style="padding-left: 50px;padding-right: 50px;"
+                            enctype="multipart/form-data">
+                            <h2 class="text-center"><strong>Transform</strong> your data</h2>
+                            {% csrf_token %}
+                            <label for="id_data_before">Data before:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="data_before" required=""
+                                    id="id_data_before">
+                                <label class="custom-file-label" for="id_data_before">Choose file...</label>
+                            </div>
+                            <p></p>
+                            <label for="id_data_format">Format example:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="data_format" required=""
+                                    id="id_data_format">
+                                <label class="custom-file-label" for="id_data_format">Choose file...</label>
+                            </div>
+                            <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
+                                    value="Submit" id="btnFetch">Transform</button></div>
+                            <a class="already" href="/login">You already have an account? Login here.</a>
+                        </form>
+                    </div><!-- End: Form Container -->
+                </section><!-- End: Registration Form with Photo -->
+            </div>
+        </div>
+    </div>
+</header>
+<section id="features" class="features">
+    <div class="container">
+        <div class="text-center section-heading">
+            <h2>API for Telematics Data</h2>
+            <p class="text-muted">An API with clean data for providers, clients and users</p>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 my-auto">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-frame text-primary"></i>
+                                <h3>Semantic AI</h3>
+                                <p class="text-muted">Identifies the semantic similarity in the case of strings, or
+                                    value similarity in the case of numbers.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-target text-primary"></i>
+                                <h3>Auto-Match</h3>
+                                <p class="text-muted">Auto-find the columns you need, based on the example provided.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-drawer text-primary"></i>
+                                <h3>Flexible Formats</h3>
+                                <p class="text-muted">Data may be in .xls, .csv, .json<br>Many time formats are also
+                                    supported</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-eyeglass text-primary"></i>
+                                <h3>Language Detection</h3>
+                                <p class="text-muted">The input table and the example format may be in different
+                                    languages.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-speech text-primary"></i>
+                                <h3>Translation</h3>
+                                <p class="text-muted">Translation of column names and string values using AI
+                                    translation.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="feature-item"><i class="icon-lock text-primary"></i>
+                                <h3>OAuth 2</h3>
+                                <p class="text-muted">Provides a secure API for applications to access data on
+                                    behalf of users.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cta" style="background-image:url({% static 'img/bg-cta.jpg' %});">
+    <div class="cta-content">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                {% if user.is_authenticated %}
-                TelematicZap Dashboard
-                {% else %}
-                TelematicZap
-                {% endif %}
-            </a>
-            <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler float-right" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/api">API</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">CONTACT</a></li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">LOGOUT</a></li>
-                    {% else %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">LOGIN</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signup">SIGNUP</a></li>
-                    {% endif %}
-                </ul>
-            </div>
+            <h2 style="font-size: 55px;">Stop cleaning.<br>Start building.<br></h2><a
+                class="btn btn-outline-warning btn-xl js-scroll-trigger" role="button" href="/signup">Let's Get
+                Started!</a>
         </div>
-    </nav>
-    {% if user.is_authenticated %}
-    <header class="masthead"
-        style="background: url('{% static 'img/bg-pattern.png' %}'), linear-gradient(to left, #7b4397, #dc2430);height: 123%;padding-top: 60px;">
-        <div class="container h-100" style="margin-top: 25px;">
-            <div class="row">
-                <div class="col mb-auto">
-                    <div class="row">
-                        <div class="col mb-auto" style="padding-right: 0px;padding-left: 0px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo"
-                                style="padding-top: 25px;padding-bottom: 25px;background: rgba(241,247,252,0.1);margin-top: 0px;height: 400;min-height: 400;padding-right: 15px;padding-left: 15px;">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post"
-                                        style="padding-left: 50px;padding-right: 50px;height: 305px;padding-bottom: 30px;">
-                                        <h2 class="text-center"><strong>1. Add</strong> your data</h2>
-                                        <div class="form-group"><input class="border rounded-0 shadow-sm form-control-file"
-                                                type="file" style="margin-top: 0px;opacity: 0.50;" required=""><small
-                                                class="form-text text-muted">Choose a .csv .xls .xlsx or .json file.</small>
-                                        </div>
-                                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
-                                                style="margin-top: 75px;">Add DataSET</button></div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="padding-top: 0px;margin-top: -10px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo" style="padding-top: 0px;padding-bottom: 0px;background: rgba(241,247,252,0);">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post" style="padding-left: 20px;padding-right: 20px;">
-                                        <h2 class="text-center"
-                                            style="color: #eb3b60;font-family: Muli, Helvetica, Arial;font-weight: normal;font-size: 20px;">
-                                            Datasets</h2>
-                                        <div role="tablist" id="accordion-1">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-edit float-right" style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-1" role="tabpanel" data-parent="#accordion-1">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2" style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-edit float-right" style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2" style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Ashton Cox</td>
-                                                                        <td>2009/01/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bradley Greer</td>
-                                                                        <td>2012/10/13<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brenden Wagner</td>
-                                                                        <td>2011/06/07<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brielle Williamson</td>
-                                                                        <td>2012/12/02<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bruno Nash<br></td>
-                                                                        <td>2011/05/03<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Caesar Vance</td>
-                                                                        <td>2011/12/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cara Stevens</td>
-                                                                        <td>2011/12/06<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cedric Kelly</td>
-                                                                        <td>2012/03/29<br></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-auto" style="margin: 0px;margin-top: 0px;margin-bottom: 0px;">
-                    <div class="row">
-                        <div class="col" style="padding-right: 0px;padding-left: 0px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo"
-                                style="padding-top: 25px;padding-bottom: 25px;background: rgba(241,247,252,0.1);padding-right: 15px;padding-left: 15px;">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post"
-                                        style="padding-left: 50px;padding-right: 50px;height: 305px;padding-bottom: 30px;">
-                                        <h2 class="text-center"><strong>2. Add</strong> your format</h2>
-                                        <div class="form-group"><input class="border rounded-0 shadow-sm form-control-file"
-                                                type="file" style="margin-top: 0px;opacity: 0.50;" name="bfdb"></div><small
-                                            class="form-text text-muted" style="font-size: 13px;margin-top: -3px;">Or,
-                                            choose the columns names</small><!-- Start: Bootstrap Tags Input --><input
-                                            class="form-control" type="text" data-role="tagsinput" data-class="label-info"
-                                            placeholder="vehicle, start address, ..."><!-- End: Bootstrap Tags Input -->
-                                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
-                                                style="margin-top: 25px;">Add Example</button></div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="padding-top: 0px;margin-top: -10px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo"
-                                style="padding-top: 0px;padding-bottom: 0px;background: rgba(241,247,252,0);">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post" style="padding-left: 20px;padding-right: 20px;">
-                                        <h2 class="text-center"
-                                            style="color: #eb3b60;font-family: Muli, Helvetica, Arial;font-weight: normal;font-size: 20px;">
-                                            Format examples</h2>
-                                        <div role="tablist" id="accordion-2">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-2 .item-1" href="#accordion-2 .item-1"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right"
-                                                            style="margin-left: 5px;"></i><i class="fa fa-edit float-right"
-                                                            style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-1" role="tabpanel" data-parent="#accordion-2">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2"
-                                                            style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-2 .item-2" href="#accordion-2 .item-2"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right"
-                                                            style="margin-left: 5px;"></i><i class="fa fa-edit float-right"
-                                                            style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-2" role="tabpanel" data-parent="#accordion-2">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2"
-                                                            style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Ashton Cox</td>
-                                                                        <td>2009/01/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bradley Greer</td>
-                                                                        <td>2012/10/13<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brenden Wagner</td>
-                                                                        <td>2011/06/07<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brielle Williamson</td>
-                                                                        <td>2012/12/02<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bruno Nash<br></td>
-                                                                        <td>2011/05/03<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Caesar Vance</td>
-                                                                        <td>2011/12/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cara Stevens</td>
-                                                                        <td>2011/12/06<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cedric Kelly</td>
-                                                                        <td>2012/03/29<br></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-auto" style="margin: 0px;margin-top: 0px;margin-bottom: 0px;">
-                    <div class="row">
-                        <div class="col" style="padding-right: 0px;padding-left: 0px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo"
-                                style="padding-top: 25px;padding-bottom: 25px;background: rgba(241,247,252,0.1);padding-right: 15px;padding-left: 15px;">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post"
-                                        style="padding-left: 50px;padding-right: 50px;height: 330;padding-bottom: 30px;">
-                                        <h2 class="text-center"><strong>3. Transform</strong></h2>
-                                        <div class="form-group" style="margin-bottom: 10px;">
-                                            <div class="dropdown" style="text-align: center;"><button
-                                                    class="btn btn-primary dropdown-toggle" aria-expanded="false"
-                                                    data-toggle="dropdown" type="button"
-                                                    style="margin-top: 0px;font-size: 13px;width: 168px;min-width: 168px;padding-top: 8px;padding-bottom: 8px;opacity: 0.68;">SELECT
-                                                    Data&nbsp;</button>
-                                                <div class="dropdown-menu" style="font-size: 13px;"><a class="dropdown-item"
-                                                        href="#" style="font-size: 13px;">First Item</a><a
-                                                        class="dropdown-item" href="#" style="font-size: 13px;">Second
-                                                        Item</a><a class="dropdown-item" href="#"
-                                                        style="font-size: 13px;">Third Item</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group" style="margin-bottom: 16px;">
-                                            <div class="dropdown" style="text-align: center;"><button
-                                                    class="btn btn-primary dropdown-toggle" aria-expanded="false"
-                                                    data-toggle="dropdown" type="button"
-                                                    style="margin-top: 5px;font-size: 13px;width: 168px;min-width: 168px;padding-top: 8px;padding-bottom: 8px;opacity: 0.68;">Select
-                                                    format</button>
-                                                <div class="dropdown-menu"><a class="dropdown-item" href="#">First
-                                                        Item</a><a class="dropdown-item" href="#">Second Item</a><a
-                                                        class="dropdown-item" href="#">Third Item</a></div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit"
-                                                style="margin-top: 43px;">Transform</button></div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" style="padding-top: 0px;margin-top: -10px;">
-                            <!-- Start: Registration Form with Photo -->
-                            <section class="register-photo"
-                                style="padding-top: 0px;padding-bottom: 0px;background: rgba(241,247,252,0);">
-                                <!-- Start: Form Container -->
-                                <div class="form-container">
-                                    <form method="post" style="padding-left: 20px;padding-right: 20px;">
-                                        <h2 class="text-center"
-                                            style="color: #eb3b60;font-family: Muli, Helvetica, Arial;font-weight: normal;font-size: 20px;">
-                                            Transformed data</h2>
-                                        <div role="tablist" id="accordion-3">
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-3 .item-1" href="#accordion-3 .item-1"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right"
-                                                            style="margin-left: 5px;"></i><i class="fa fa-edit float-right"
-                                                            style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-1" role="tabpanel" data-parent="#accordion-3">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2"
-                                                            style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                    <tr></tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-3 .item-2" href="#accordion-3 .item-2"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right"
-                                                            style="margin-left: 5px;"></i><i class="fa fa-edit float-right"
-                                                            style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-2" role="tabpanel" data-parent="#accordion-3">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2"
-                                                            style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Ashton Cox</td>
-                                                                        <td>2009/01/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bradley Greer</td>
-                                                                        <td>2012/10/13<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brenden Wagner</td>
-                                                                        <td>2011/06/07<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brielle Williamson</td>
-                                                                        <td>2012/12/02<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bruno Nash<br></td>
-                                                                        <td>2011/05/03<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Caesar Vance</td>
-                                                                        <td>2011/12/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cara Stevens</td>
-                                                                        <td>2011/12/06<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cedric Kelly</td>
-                                                                        <td>2012/03/29<br></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="card">
-                                                <div class="card-header" role="tab" style="padding-top: 7px;">
-                                                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false"
-                                                            aria-controls="accordion-3 .item-3" href="#accordion-3 .item-3"
-                                                            style="color: rgb(122,113,91);font-size: 14px;">Accordion</a><i
-                                                            class="fa fa-plus float-right" style="margin-left: 5px;"></i><i
-                                                            class="fa fa-remove float-right"
-                                                            style="margin-left: 5px;"></i><i class="fa fa-edit float-right"
-                                                            style="margin-left: 5px;"></i></h5>
-                                                </div>
-                                                <div class="collapse item-3" role="tabpanel" data-parent="#accordion-3">
-                                                    <div class="card-body">
-                                                        <div class="table-responsive table mb-0 pt-3 pr-2"
-                                                            style="margin-top: -18px;">
-                                                            <table class="table table-striped table-sm my-0 mydatatable">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Name</th>
-                                                                        <th>Start date</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>Airi Satou</td>
-                                                                        <td>2008/11/28</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Angelica Ramos</td>
-                                                                        <td>2009/10/09<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Ashton Cox</td>
-                                                                        <td>2009/01/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bradley Greer</td>
-                                                                        <td>2012/10/13<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brenden Wagner</td>
-                                                                        <td>2011/06/07<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Brielle Williamson</td>
-                                                                        <td>2012/12/02<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Bruno Nash<br></td>
-                                                                        <td>2011/05/03<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Caesar Vance</td>
-                                                                        <td>2011/12/12<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cara Stevens</td>
-                                                                        <td>2011/12/06<br></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Cedric Kelly</td>
-                                                                        <td>2012/03/29<br></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div><!-- End: Form Container -->
-                            </section><!-- End: Registration Form with Photo -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header><!-- Start: Highlight Clean -->
-    <section class="highlight-clean" style="margin-bottom: 20px;">
-        <div class="container">
-            <!-- Start: Intro -->
-            <div class="intro">
-                <h2 class="text-center">Need help?</h2>
-                <p class="text-center">Send us a message and we'll get <br>back to you with a solution.<br><br><a
-                        class="btn btn-primary border rounded-0" role="button" href="/contact"
-                        style="margin-top: 15px;width: 210px;background: var(--yellow);">CONTACT US</a></p>
-            </div><!-- End: Intro -->
-        </div>
-    </section><!-- End: Highlight Clean -->
-    {% else %}
-    <header class="masthead" style="background:url('{% static 'img/bg-pattern.png' %}'), linear-gradient(to left, #7b4397, #dc2430);height:100%;">
-        <div class="container h-100">
-            <div class="row h-100">
-                <div class="col-lg-7 my-auto">
-                    <div class="mx-auto header-content">
-                        <h1 class="mb-5">Auto-transform <br>your data from one format to another.<br></h1><a class="btn btn-outline-warning btn-xl js-scroll-trigger" role="button" href="/signup">Start Now for Free!</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 my-auto">
-                    <!-- Start: Registration Form with Photo -->
-                    <section class="register-photo" style="padding-top: 25px;padding-bottom: 25px;background: rgba(241,247,252,0.1);">
-                        <!-- Start: Form Container -->
-                        <div class="form-container">
-                            <form method="post" style="padding-left: 50px;padding-right: 50px;" enctype="multipart/form-data">
-                                <h2 class="text-center"><strong>Transform</strong> your data</h2>
-                                {% csrf_token %}
-                                <label for="id_data_before">Data before:</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="data_before" required="" id="id_data_before">
-                                    <label class="custom-file-label" for="id_data_before">Choose file...</label>
-                                </div><p></p>
-                                <label for="id_data_format">Format example:</label>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="data_format" required="" id="id_data_format">
-                                    <label class="custom-file-label" for="id_data_format">Choose file...</label>
-                                </div>
-                                <div class="form-group"><button class="btn btn-primary btn-block" type="submit" value="Submit" id="btnFetch">Transform</button></div>
-                                <a class="already" href="/login">You already have an account? Login here.</a>
-                            </form>
-                        </div><!-- End: Form Container -->
-                    </section><!-- End: Registration Form with Photo -->
-                </div>
-            </div>
-        </div>
-    </header>
-    <section id="features" class="features">
-        <div class="container">
-            <div class="text-center section-heading">
-                <h2>API for Telematics Data</h2>
-                <p class="text-muted">An API with clean data for providers, clients and users</p>
-                <hr>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 my-auto">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-frame text-primary"></i>
-                                    <h3>Semantic AI</h3>
-                                    <p class="text-muted">Identifies the semantic similarity in the case of strings, or value similarity in the case of numbers.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-target text-primary"></i>
-                                    <h3>Auto-Match</h3>
-                                    <p class="text-muted">Auto-find the columns you need, based on the example provided.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-drawer text-primary"></i>
-                                    <h3>Flexible Formats</h3>
-                                    <p class="text-muted">Data may be in .xls, .csv, .json<br>Many time formats are also supported</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-eyeglass text-primary"></i>
-                                    <h3>Language Detection</h3>
-                                    <p class="text-muted">The input table and the example format may be in different languages.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-speech text-primary"></i>
-                                    <h3>Translation</h3>
-                                    <p class="text-muted">Translation of column names and string values using AI translation.</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature-item"><i class="icon-lock text-primary"></i>
-                                    <h3>OAuth 2</h3>
-                                    <p class="text-muted">Provides a secure API for applications to access data on behalf of users.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="cta" style="background-image:url({% static 'img/bg-cta.jpg' %});">
-        <div class="cta-content">
-            <div class="container">
-                <h2 style="font-size: 55px;">Stop cleaning.<br>Start building.<br></h2><a class="btn btn-outline-warning btn-xl js-scroll-trigger" role="button" href="/signup">Let's Get Started!</a>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </section>
-    {% endif %}
-    <footer>
-        <div class="container">
-            <p>©&nbsp;TelematicZap 2021. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">FAQ</a></li>
-            </ul>
-        </div>
-    </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
-    <script src="{% static 'js/smart-forms.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="{% static 'js/script.min.js' %}"></script>
-    <script>
-        $(document).ready(setup);
-
-        function setup() {
-            $('.custom-file input').change(function (e) {
-                var files = [];
-                for (var i = 0; i < $(this)[0].files.length; i++) {
-                    files.push($(this)[0].files[i].name);
-                }
-                $(this).next('.custom-file-label').html(files.join(', '));
-            });
-
-            $("form").on("submit", function () {
-                $(this).find(":submit").prop("disabled", true);
-            });
-
-             $("#btnFetch").bind("click", function () {
-                // add spinner to button
-                $(this).html(
-                    `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
-                );
-                return true;
-            });
-        }
-    </script>
-</body>
-
-</html>
+    </div>
+    <div class="overlay"></div>
+</section>
