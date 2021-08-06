@@ -53,7 +53,7 @@ urlpatterns = [
     #path('api', views),  # an example resource endpoint
     path("", views.HomeFormView.as_view(), name="home"),
     path("contact", views.ContactFormView.as_view(), name="contact"),
-    path("login", views.UserLoginFormView.as_view(), name="login"),
+    path("login", views.LoginFormView.as_view(), name="login"),
     path("signup", views.RegisterFormView.as_view(), name="signup"),
     path('', include('django.contrib.auth.urls')),
     path("data-before", views.DataBeforeList.as_view(), name="data-before"),

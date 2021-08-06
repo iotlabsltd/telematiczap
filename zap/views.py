@@ -15,7 +15,7 @@ from rest_framework import generics, permissions, serializers
 from django.contrib.auth.models import Group
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from django.views.generic.base import TemplateView
-from .forms import UserRegisterForm, HomeForm
+from .forms import UserRegisterForm, HomeForm, UserLoginForm
 from django.urls import reverse_lazy
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from transformer.transform import transform
@@ -118,9 +118,9 @@ class RegisterFormView(FormView):
             return valid
 
 
-class UserLoginFormView(FormView):
+class LoginFormView(FormView):
     template_name = 'registration/login.html'
-    form_class = UserRegisterForm
+    form_class = UserLoginForm
     success_url = '/'
 
     def form_valid(self, form):

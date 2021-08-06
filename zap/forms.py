@@ -33,10 +33,9 @@ class UserRegisterForm(UserCreationForm):
 
 # form for use login
 class UserLoginForm(AuthenticationForm):
-    pass
-    #class Meta:
-    #    model = User
-    #    fields = ('username', 'password')
+    class Meta:
+        model = User
+        fields = ('username', 'password')
 
 
 # form for user profile update
