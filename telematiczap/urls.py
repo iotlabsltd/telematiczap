@@ -77,11 +77,11 @@ urlpatterns = [
     path("signup", views.RegisterFormView.as_view(), name="signup"),
     path('', include('django.contrib.auth.urls')),
     path("data-before", views.DataBeforeList.as_view(), name="data-before"),
-    path("data-before/<pk>", views.DataBeforeRUD.as_view()),
+    path("data-before/<id>", views.DataBeforeRUD.as_view()),
     path("data-after", views.DataAfterList.as_view(), name="data-after"),
-    path("data-after/<pk>", views.DataAfterRUD.as_view()),
+    path("data-after/<id>", views.DataAfterRUD.as_view()),
     path("data-format", views.DataFormatList.as_view(), name="data-format"),
-    path("data-format/<pk>", views.DataFormatRUD.as_view()),
+    path("data-format/<id>", views.DataFormatRUD.as_view()),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG: 
