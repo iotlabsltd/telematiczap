@@ -4,7 +4,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from .models import User, DataBefore, DataFormat, DataAfter
 
-# form for user profile update
 class HomeForm(forms.Form):
     data_before = forms.FileField()
     data_format = forms.FileField()
@@ -17,7 +16,6 @@ class HomeForm(forms.Form):
         self.helper.add_input(Submit('submit', 'Submit'))
 
 
-# forms for user registration
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(max_length=254, help_text='Insert a valid e-mail address.', required=True)
     class Meta:
@@ -31,14 +29,12 @@ class UserRegisterForm(UserCreationForm):
             user.save()
         return user
 
-# form for use login
 class UserLoginForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username', 'password')
 
 
-# form for user profile update
 class UserEditForm(UserChangeForm):
     first_name = forms.CharField(max_length=30, required=True)
     last_name = forms.CharField(max_length=30, required=True)

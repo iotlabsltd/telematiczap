@@ -23,6 +23,7 @@ from rest_framework import filters
 from .models import User, DataBefore, DataAfter, DataFormat, DataFormatClues
 from .serializers import DataBeforeSerializer, DataAfterSerializer, DataFormatSerializer, DataFormatCluesSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.auth.views import LoginView
 
 class ApiEndpoint(ProtectedResourceView):
     def get(self, request, *args, **kwargs):
@@ -66,25 +67,6 @@ class HomeFormView(FormView):
         else:
             return valid
 
-
-#        self.object = form.instance #form.save()
-#        context = {'articles': Article.objects.all()}
-#        data['html_articles'] = render_to_string(
-#            'article/articles.html',
-#            context
-#        )
-#        # NEXT LINE
-#        data['form_is_valid'] = True
-#        return JsonResponse(data)
-        
-#class HomeView(TemplateView):
-#    template_name = 'home.html'
-#
-#    def get_context_data(self, **kwargs):
-#        context = super().get_context_data(**kwargs)
-#        context['user'] = self.request.user
-#        context['title'] = 'Home'
-#        return context
     
 
 class ContactFormView(FormView):
@@ -118,73 +100,9 @@ class RegisterFormView(FormView):
             return valid
 
 
-class LoginFormView(FormView):
+class LoginFormView(LoginView):
     template_name = 'registration/login.html'
     form_class = UserLoginForm
-    success_url = '/'
-
-    def form_valid(self, form):
-        valid = super().form_valid(form)
-        if valid:
-            # Login the user, show message and redirect
-            login(self.request, self.object)
-            messages.success(self.request, "Login successful.")
-            return redirect('/')
-        else:
-            # Show error
-            messages.error(self.request, "Unsuccessful registration. Invalid information.")
-            return valid
-
-
-#THIS WORKS BUT IT'S UGLY
-#def register(request):
-#    if request.method == "POST":
-#        form = UserRegisterForm(request.POST)
-#        if form.is_valid():
-#            user = form.save()
-#            login(request, user)
-#            messages.success(request, "Registration successful.")
-#            return redirect("/")
-#        else:
-#            messages.error(request, "Unsuccessful registration. Invalid information.")
-#    form = UserRegisterForm()
-#    return render(request=request, template_name="registration/register.html", context={"register_form": form, 'title': 'Register'})
-#
-#class DatasetBeforeFormView(FormView):
-#    template_name = 'data/upload-before.html'
-#    form_class = DataBeforeForm
-#    success_url = '/'
-#
-#    def form_valid(self, form):
-#        form.save()
-#        return super().form_valid(form)
-#
-#    def form_valid(self, form):
-#        valid = super().form_valid(form)
-#        if valid:
-#            dataset = form.save()
-#            messages.success(self.request, "Dataset uploaded.")
-#            return redirect('/')
-#        else:
-#            messages.error(self.request, "Failed to submit the dataset.")
-#            return valid
-#
-#class DataBeforeList(generics.ListAPIView):
-#    """
-#    View to list all users in the system.
-#
-#    * Requires token authentication.
-#    * Only admin users are able to access this view.
-#    """
-#    authentication_classes = [authentication.TokenAuthentication]
-#    #permission_classes = [permissions.IsAdminUser]
-#
-#    def get(self, request, format=None):
-#        """
-#        Return a list of all users.
-#        """
-#        usernames = [user.username for user in User.objects.all()]
-#        return Response(usernames)
 
 
 class IsOwnerFilterBackend(filters.BaseFilterBackend):
