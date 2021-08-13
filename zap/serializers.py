@@ -31,8 +31,8 @@ class DataFormatCluesSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class DataFormatSerializer(serializers.HyperlinkedModelSerializer):
-    columns_force_ignore = serializers.CharField(max_length=150, allow_blank=True)
-    columns_force_use = serializers.CharField(max_length=150, allow_blank=True)
+    ignore_columns = serializers.CharField(max_length=150, allow_blank=True)
+    use_columns = serializers.CharField(max_length=150, allow_blank=True)
     class Meta:
         model = DataFormat
         fields = ("id", "name", "file", "ignore_columns", "use_columns")

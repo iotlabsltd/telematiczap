@@ -14,5 +14,8 @@ django-filter==2.4.0
 django-oauth-toolkit==1.5.0
 djangorestframework==3.12.4
 pathlib==1.0.1
-gunicorn==20.1.0
+gunicorn==20.1.0ruamel.yaml.clib==0.1.0
 whitenoise==5.3.0
+drf-yasg==1.20
+ruamel.yaml.clib==0.2.0
+ruamel.yaml==0.16.7

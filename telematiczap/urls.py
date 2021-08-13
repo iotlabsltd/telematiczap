@@ -13,12 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.urls.conf import re_path
+from rest_framework_swagger.views import get_swagger_view
+from django.conf.urls import url
 from django.urls import include, path
 import oauth2_provider.views as oauth2_views
 from django.conf import settings
 import zap.views as views
 from django.contrib import admin
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 oauth2_endpoint_views = [
     path('authorize/', oauth2_views.AuthorizationView.as_view(), name="authorize"),
@@ -44,13 +51,26 @@ if settings.DEBUG:
     ]
 
 
+schema_view = get_schema_view(
+    openapi.Info(
+        title="TelematicZap API",
+        default_version='v1',
+        description="API schema for the TelematicZap service.",
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
+
+
 urlpatterns = [
     path('_a_/', admin.site.urls),
     #path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    re_path(r'^api(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('api/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/hello', views.ApiEndpoint.as_view()),  # an example resource endpoint
-    #path('api', views),  # an example resource endpoint
     path("", views.HomeFormView.as_view(), name="home"),
     path("contact", views.ContactFormView.as_view(), name="contact"),
     path("login", views.LoginFormView.as_view(), name="login"),

@@ -27,10 +27,6 @@ SECRET_KEY = 'django-insecure-%n#gb*%e^%81(m5r$57u-7n5)nb^$+bt3i*v5$5js38m$lj$60
 DEBUG = False
 ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'ambient-net-322011.ey.r.appspot.com']
 
-
-
-# Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'zap',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -130,8 +127,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'static'
 
 STATICFILES_DIRS = (
     BASE_DIR / 'zap' / 'static',    
