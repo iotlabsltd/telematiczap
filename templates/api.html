@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@3/swagger-ui.css">
 </head>
 
 <body id="page-top">
@@ -40,7 +41,23 @@
         <div class="container">
             <div class="text-center section-heading">
                 <p class="text-muted">An API with clean data for providers, clients and users</p>
-                <hr style="margin-bottom: 44px;"><textarea></textarea>
+                <div id="swagger-ui"></div>
+                <script src="https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+                <script>
+                    const ui = SwaggerUIBundle({
+                        url: "{% url schema_url %}",
+                        dom_id: '#swagger-ui',
+                        presets: [
+                            SwaggerUIBundle.presets.apis,
+                            SwaggerUIBundle.SwaggerUIStandalonePreset
+                        ],
+                        layout: "BaseLayout",
+                        requestInterceptor: (request) => {
+                            request.headers['X-CSRFToken'] = "{{ csrf_token }}"
+                            return request;
+                        }
+                    })
+                </script>
             </div>
         </div>
     </section>

@@ -90,14 +90,23 @@ def translate_dataframe(dataframe, lang_from='auto', lang_to='en') -> pd.DataFra
         lang_values = lang_from
     # copy the input dataframe
     translated_dataframe = dataframe.copy()
+    # translate the columns
+    if lang_columns != lang_to:
+        translator = GoogleTranslator(source=lang_columns, target=lang_to)
+        translated_columns= pd.Series([translator.translate(c) for c in translated_dataframe.columns])
+        original_columns = pd.Series(translated_dataframe.columns)
+        dups = pd.Series(translated_columns).duplicated(keep=False)
+        translated_columns[dups] = translated_columns[dups] + ' (' + original_columns[dups] + ')'
+        translated_dataframe.columns = translated_columns
     # translate the values
     if lang_values != lang_to:
         translator = GoogleTranslator(source=lang_values, target=lang_to)
-        text_columns = find_text_columns(dataframe)
+        text_columns = find_text_columns(translated_dataframe)
         def translate_text_column(column):
             def translate_text_only(x):
                 # if x is not a string, return it
                 if type(x) != str: return x
+                if x.isnumeric(): return x
                 # keep only the first 5000 characters (limitation of google translate api)
                 x = x.strip()[:5000]
                 # if x is nan or an empty string, return it
@@ -107,15 +116,7 @@ def translate_dataframe(dataframe, lang_from='auto', lang_to='en') -> pd.DataFra
                 return translator.translate(x)
             # map the translated unique values to the original values
             return column.map({x: translate_text_only(x) for x in column.unique()})
-        translated_dataframe[text_columns] = dataframe[text_columns].apply(translate_text_column)
-    # translate the columns
-    if lang_columns != lang_to:
-        translator = GoogleTranslator(source=lang_columns, target=lang_to)
-        translated_columns= pd.Series([translator.translate(c) for c in translated_dataframe.columns])
-        original_columns = pd.Series(translated_dataframe.columns)
-        dups = pd.Series(translated_columns).duplicated(keep=False)
-        translated_columns[dups] = translated_columns[dups] + ' (' + original_columns[dups] + ')'
-        translated_dataframe.columns = translated_columns
+        translated_dataframe[text_columns] = translated_dataframe[text_columns].apply(translate_text_column)
         
     # return the translated dataframe
     return translated_dataframe

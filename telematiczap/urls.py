@@ -63,15 +63,23 @@ schema_view = get_schema_view(
 )
 
 
+def logged_in_switch_view(logged_in_view, logged_out_view):
+    def inner_view(request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return logged_in_view(request, *args, **kwargs)
+        return logged_out_view(request, *args, **kwargs)
+
+    return inner_view
+
 urlpatterns = [
     path('_a_/', admin.site.urls),
-    #path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    #path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('api/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/hello', views.ApiEndpoint.as_view()),  # an example resource endpoint
-    path("", views.HomeFormView.as_view(), name="home"),
+    path("", logged_in_switch_view(views.DashboardFormView.as_view(), views.HomeFormView.as_view()), name="home"),
     path("contact", views.ContactFormView.as_view(), name="contact"),
     path("login", views.LoginFormView.as_view(), name="login"),
     path("signup", views.RegisterFormView.as_view(), name="signup"),

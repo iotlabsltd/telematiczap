@@ -1,9 +1,10 @@
+from django.views.generic.edit import CreateView
 from rest_framework import status
 from django.http.response import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import authentication, permissions
 from rest_framework.response import Response
-from django.views.generic.edit import FormView
+from django.views.generic import View, FormView
 from oauth2_provider.views.generic import ProtectedResourceView
 from .models import Message
 from .forms import ContactForm
@@ -15,9 +16,9 @@ from rest_framework import generics, permissions, serializers
 from django.contrib.auth.models import Group
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 from django.views.generic.base import TemplateView
-from .forms import UserRegisterForm, HomeForm, UserLoginForm
+from .forms import HomeForm, UserRegisterForm, UserLoginForm
 from django.urls import reverse_lazy
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 from transformer.transform import transform
 from rest_framework import filters
 from .models import User, DataBefore, DataAfter, DataFormat, DataFormatClues
@@ -67,7 +68,45 @@ class HomeFormView(FormView):
         else:
             return valid
 
-    
+
+class DashboardFormView(CreateView):  # ProtectedResourceView
+    template_name = 'index.html'
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        queryset1 = DataBefore.objects.filter(user=request.user)
+        queryset2 = DataFormat.objects.filter(user=request.user)
+        queryset3 = DataAfter.objects.filter(user=request.user)
+        return render(request, self.template_name, {
+            'queryset1': queryset1,
+            'queryset2': queryset2,
+            'queryset3': queryset3,
+        })
+
+    def post(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            if 'databefore' in request.POST:
+                messages.success(request, 'Your dataset has been uploaded.')
+                pass
+                ## do what ever you want to do for first function ####
+            if 'dataformat' in request.POST:
+                messages.success(request, 'Your format has been uploaded.')
+                pass
+            if 'dataafter' in request.POST:
+                messages.success(
+                    request, 'Zap! Your dataset has been transformed!')
+                pass
+            ## do what ever you want to do for second function ####
+            ## return def post###
+        queryset1 = DataBefore.objects.filter(user=request.user)
+        queryset2 = DataFormat.objects.filter(user=request.user)
+        queryset3 = DataAfter.objects.filter(user=request.user)
+        return render(request, self.template_name, {
+            'queryset1': queryset1,
+            'queryset2': queryset2,
+            'queryset3': queryset3,
+        })
+
 
 class ContactFormView(FormView):
     template_name = 'contact.html'
@@ -111,7 +150,6 @@ class IsOwnerFilterBackend(filters.BaseFilterBackend):
     """
     def filter_queryset(self, request, queryset, view):
         return queryset.filter(user=request.user)
-
 class AuthenticatedListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     filter_backends = [IsOwnerFilterBackend, DjangoFilterBackend]

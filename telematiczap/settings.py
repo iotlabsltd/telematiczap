@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-%n#gb*%e^%81(m5r$57u-7n5)nb^$+bt3i*v5$5js38m$lj$60
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'ambient-net-322011.ey.r.appspot.com']
+CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    #'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
 ]
 
 ROOT_URLCONF = 'telematiczap.urls'
@@ -142,11 +143,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django OAuth Toolkit settings
 AUTH_USER_MODEL = 'zap.User'
 LOGIN_URL = '/login'
-CORS_ORIGIN_ALLOW_ALL = True
-#AUTHENTICATION_BACKENDS = (
-#    'oauth2_provider.backends.OAuth2Backend', # OAuth2
-#    'django.contrib.auth.backends.ModelBackend', # Django admin
-#)
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Django admin
+    'oauth2_provider.backends.OAuth2Backend', # OAuth2
+)
 OAUTH2_PROVIDER = {
     # this is the list of available scopes
     'SCOPES': {

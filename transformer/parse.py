@@ -5,6 +5,7 @@ import pandas as pd
 import os
 import datefinder
 import re
+from pandas.api.types import is_datetime64_any_dtype, is_timedelta64_dtype
 
 
 
@@ -19,11 +20,16 @@ def is_column_text(column: pd.Series) -> bool:
         bool: True if the column is a string column, False otherwise
     """
     # check column dtype
-    if column.dtype != 'object' or column.dtype != 'str':
+    if (column.dtype != 'object') and (column.dtype != 'str'):
         return False
 
     # check for 'id' in the column name
-    if 'id' in column.name.lower():
+    from .similarity import similarity_str
+    if similarity_str('id', column.name.lower()) > 0.5:
+        return False
+
+    # check for 'address' in the column name
+    if similarity_str('address', column.name.lower()) > 0.5:
         return False
 
     # check if at least some values are strings
@@ -55,18 +61,47 @@ def is_column_text(column: pd.Series) -> bool:
 
 
 
-
-def is_column_time(column: pd.Series) -> bool:
+def is_time(x) -> bool:
     """
-    Check if a column is a datetime or timedelta column.
-    
+    Check if x has time information.
+    """
+    if type(x) == pd.Series:
+        if is_timedelta64_dtype(x):
+            return True
+        else:
+            sample = x.sample(n=min(len(x), 20)).apply(is_time)
+            return sample.astype(float).mean() > 0.5
+    if re.search(r'\d{2}:\d{2}', str(x)) is not None:
+        if re.search(r'00:00:00', str(x)) is None:
+            return True
+    return False
+
+
+def is_date(x) -> bool:
+    """
+    Check if x has date information.
+    """
+    if type(x) == pd.Series:
+        if is_datetime64_any_dtype(x):
+            return True
+        else:
+            sample = x.sample(n=min(len(x), 20)).apply(is_date)
+            return sample.astype(float).mean() > 0.5
+    return re.search(r'\d{2}[-/\\\.]\d{2}[-/\\\.]\d{2}', str(x)) is not None
+
+
+
+def count_columns_with_dates(dataframe: pd.DataFrame) -> int:
+    """
+    Count the number of columns in a dataframe that have dates
+
     Args:
-        column (pd.Series): the column to check
+        dataframe: The dataframe to check
     
     Returns:
-        bool: True if the column is a datetime or timedelta column, False otherwise
+        The number of columns in the dataframe that have dates
     """
-    return 'time' in str(column.dtype)
+    return sum(is_date(dataframe[col]) for col in dataframe.columns)
 
 
 def is_column_numeric(column: pd.Series) -> bool:
@@ -85,18 +120,6 @@ def is_column_numeric(column: pd.Series) -> bool:
         return False
 
 
-def has_time_information(x) -> bool:
-    """
-    Check if x has time information.
-    """
-    if type(x) == pd.Series:
-        return has_time_information(x.iloc[0])
-    if re.search(r'00:00:00', str(x)):
-        return False
-    else:
-        return re.search(r'\d{2}:\d{2}', str(x))
-
-
 __base_date = pd.to_datetime('1950-01-01')
 def parse_datetime(date_str: str) -> pd.Timestamp:
     """
@@ -106,13 +129,13 @@ def parse_datetime(date_str: str) -> pd.Timestamp:
         date_str (str): string of datetime to parse
 
     Returns:
-        pandas.Timestamp: a parsed timestamp
+        pandas.Timestamp or datetime.time
     """
     matches = datefinder.find_dates(date_str, base_date=__base_date)
     date_matched = next(matches)
-    # return timedelta if the date matches the __base_date
+    # return datetime.time if the date matches the __base_date
     if date_matched.date() == __base_date:
-        return date_matched - __base_date
+        return date_matched.time()
     # otherwise, return the datetime matched
     else:
         return date_matched
@@ -121,13 +144,13 @@ def parse_datetime(date_str: str) -> pd.Timestamp:
 
 def parse_datetime_column(column: pd.Series) -> pd.Series:
     """
-    Parse a column of strings to a column of pd.Timestamp or pd.Timedelta.
+    Parse a column of strings to a column of pd.Timestamp or datetime.time.
 
     Args:
         column (pd.Series): a column of strings to parse
 
     Returns:
-        pd.Series: a column of pd.Timestamp or pd.Timedelta.
+        pd.Series: a column of pd.Timestamp or datetime.time.
     """
     # if column is all nans, return column
     if column.isnull().all():
