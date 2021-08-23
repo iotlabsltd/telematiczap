@@ -63,10 +63,11 @@ schema_view = get_schema_view(
 )
 
 
+def logged_in_switch_view(logged_in_view, logged_out_view):
 urlpatterns = [
     path('_a_/', admin.site.urls),
-    #path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
+    #path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('api/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
