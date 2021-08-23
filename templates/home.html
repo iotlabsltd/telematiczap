@@ -1,5 +1,15 @@
 {% load static %}
 
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <div class="alert alert-success col-lg-6 col-sm-12 col-xs-12 text-center mx-auto" role="alert">
+        <li class="{{ message.tags }}">{{ message }}</li>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
 <header class="masthead"
     style="background:url('{% static 'img/bg-pattern.png' %}'), linear-gradient(to left, #7b4397, #dc2430);height:100%;">
     <div class="container h-100">
