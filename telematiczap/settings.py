@@ -24,8 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%n#gb*%e^%81(m5r$57u-7n5)nb^$+bt3i*v5$5js38m$lj$60'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'ambient-net-322011.ey.r.appspot.com']
+DEBUG = True
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', 'telematiczap.uc.r.appspot.com']
 CORS_ORIGIN_ALLOW_ALL = True
 
 INSTALLED_APPS = [
