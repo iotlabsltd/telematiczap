@@ -28,9 +28,8 @@
                     <!-- Start: Form Container -->
                     <div class="form-container">
                         <form method="post" style="padding-left: 50px;padding-right: 50px;"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data">{% csrf_token %}
                             <h2 class="text-center"><strong>Transform</strong> your data</h2>
-                            {% csrf_token %}
                             <label for="id_data_before">Your Data in .csv .xls or .json:</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" name="data_before" required=""
@@ -111,6 +110,34 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+<section style='
+    padding: 0px; 
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 32%, rgba(102,109,116,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 32%, rgba(102,109,116,1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 32%, rgba(102,109,116,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#666d74",GradientType=1);'>
+    <style>
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            }
+
+            .videoWrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            }
+    </style>
+    <div class="container">
+        <div class="videoWrapper"><iframe allowfullscreen frameborder="0"
+                src="https://drive.google.com/file/d/1UOf-Ty_O4_PjjR0q9BiTIlphP3_Z-xzd/preview" class="embed-responsive-item" 
+                width="100%" height="100%"></iframe></div>
     </div>
 </section>
 <section class="cta" style="background-image:url({% static 'img/bg-cta.jpg' %});">
