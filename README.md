@@ -1,7 +1,10 @@
-# The TelematicZap project
-## Auto transform telematics data from one format to another.
+# The TelematicZap project 
+
+Auto transform telematics data from one format to another.
+
 [![Demo TelematicZap alpha](https://j.gifs.com/vQjqm5.gif)](https://www.youtube.com/watch?v=hKOi9hcCmps)
-This is an open-source django project funded by DAPSI, and developed by Konetik.  
+
+This is an open-source django project funded by DAPSI NGI, and developed by Konetik.
 
 ## Setup
 To setup the project, along with a superuser, type:  
