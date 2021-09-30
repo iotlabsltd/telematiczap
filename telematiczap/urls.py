@@ -72,7 +72,7 @@ def logged_in_switch_view(logged_in_view, logged_out_view):
     return inner_view
 
 urlpatterns = [
-    path('_a_/', admin.site.urls),
+    path('a/', admin.site.urls),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     #path('o/', include((oauth2_endpoint_views, 'oauth2_provider'), namespace="oauth2_provider")),
     #path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
