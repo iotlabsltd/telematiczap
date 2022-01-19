@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'crispy_forms',
     'zap',
-    'drf_yasg'
+    'drf_spectacular'
 ]
 
 MIDDLEWARE = [
@@ -168,6 +168,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'TelematicZap API Docs',
+    'DESCRIPTION': 'API documentation for the TelematicZap service.',
+    'VERSION': '1.0.0',
+    'COMPONENT_SPLIT_PATCH': False,
+    # OTHER SETTINGS
 }
 
 # crispy forms settings
