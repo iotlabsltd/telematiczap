@@ -2,8 +2,7 @@
 
 import pandas as pd
 import numpy as np
-from .similarity import similarity_str, similarity_columns
-from .parse import is_column_text, is_column_numeric, is_time, is_date, count_columns_with_dates
+from .similarity import similarity_str, similarity_columns, is_column_text, is_time, is_date, count_columns_with_dates
 from datetime import time
 import geopy
 
@@ -72,8 +71,8 @@ def find_column(dataframe: pd.DataFrame, example_column: pd.Series, params={}, r
         The column found that is most similar to the example_column
     """
     # find columns' similarities
-    similarities = dataframe.apply(lambda column: similarity_columns(column, example_column))
-    if np.max(similarities) < min_similarity: return None
+    similarities = dataframe.apply(lambda column: similarity_columns(column, example_column, params))
+    if np.max(similarities) < params.get('min_similarity_column', 0.25): return None
     # find the most similar column
     column = dataframe.iloc[:, np.argmax(similarities)]
     # replace the name of the column with the name of the example_column
@@ -85,8 +84,8 @@ def find_column(dataframe: pd.DataFrame, example_column: pd.Series, params={}, r
 
 
 
-def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, min_similarity=0.25, 
-                   rename=True, print_similarities=False, drop_duplicates=True) -> pd.DataFrame:
+def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, params={},
+    rename=True, print_similarities=False, drop_duplicates=True) -> pd.DataFrame:
     """
     Finds and returns the most similar columns to example_dataframe found in the dataframe.
 
@@ -112,7 +111,7 @@ def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, min
         for example_col_name in example_dataframe.columns:
             col = dataframe[col_name]
             example_col = example_dataframe[example_col_name]
-            similarities.loc[col_name, example_col_name] = similarity_columns(col, example_col)
+            similarities.loc[col_name, example_col_name] = similarity_columns(col, example_col, params=params)
     # print similarities
     if print_similarities:
         print(similarities)
@@ -124,7 +123,7 @@ def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, min
         example_col_name = similarities.max(axis=0).idxmax()
         similarity = similarities.loc[col_name, example_col_name]
         # if the similarity is too low, ignore the column
-        if similarity < min_similarity: break
+        if similarity < params.get('min_similarity_column', 0.25): break
         # find the column that is most similar to the example column
         similar_col = dataframe.loc[:, col_name]
         example_col = example_dataframe.loc[:, example_col_name]
@@ -132,19 +131,33 @@ def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, min
         # drop the matched similarities
         similarities = similarities.drop(columns=example_col_name)
         print(col_name, '-->', example_col_name)
+        # if this is a date, normalize it
+        if is_date(similar_col, params=params):
+            output_dataframe[example_col_name] = pd.to_datetime(similar_col)
         # if this is the last column with dates in it, then keep it
-        if not is_date(similar_col) or count_columns_with_dates(dataframe[similarities.index]) > 1:
+        if not is_date(similar_col, params=params) or count_columns_with_dates(dataframe[similarities.index]) > 1:
             similarities = similarities.drop(index=col_name)
         # if the datatype is a time (datetime, timestamp, datetime.time or timedelta)
-        if is_date(example_col) and is_time(example_col) and is_date(similar_col) and not is_time(similar_col):
-            time_col_missing = find_column(dataframe[similarities.index], example_col.dt.time, min_similarity, rename=False)
+        if is_date(example_col, params=params) and is_time(example_col, params=params) and is_date(similar_col, params=params) and not is_time(similar_col, params=params):
+            # look for missing time column
+            time_col_missing = find_column(dataframe[similarities.index], example_col.dt.time, params=params, rename=False)
             if time_col_missing is not None:
-                time_col_missing = time_col_missing.apply(time.isoformat).apply(pd.to_timedelta)
+                # normalize time column found to be pd.timedelta
+                try:
+                    time_col_missing = time_col_missing.apply(time.isoformat).apply(pd.to_timedelta)
+                except TypeError:
+                    # occurs when time_col_missing is made of strings instead of time
+                    time_col_missing = time_col_missing.apply(pd.to_timedelta)
+                # add missing times to dates
                 output_dataframe[example_col_name] = output_dataframe[example_col_name] + time_col_missing
-                similarities = similarities.drop(index=time_col_missing.name)
                 print(col_name, '+', time_col_missing.name, '-->', example_col_name)                    
-    # return after removing the duplicate
+                # drop time column from the original dataframe
+                similarities = similarities.drop(index=time_col_missing.name)
+    # replace columns
+    output_dataframe.columns = example_dataframe.columns
+    # return after removing the duplicates
     return output_dataframe.drop_duplicates() if drop_duplicates else output_dataframe
+    
 
 
 
@@ -169,7 +182,7 @@ def find_column_by_name(dataframe: pd.DataFrame, column_name: str) -> pd.Series:
 
 
 
-def find_dataframe_by_colnames(dataframe: pd.DataFrame, column_names, min_similarity=0.25) -> pd.Series:
+def find_dataframe_by_colnames(dataframe: pd.DataFrame, column_names, params={}) -> pd.Series:
     """
     Return the columns from the dataframe that are most similar to the example
     
@@ -195,7 +208,7 @@ def find_dataframe_by_colnames(dataframe: pd.DataFrame, column_names, min_simila
         similarity = similarities.loc[col_name, example_col_name]
         similarities = similarities.drop(columns=example_col_name)
         # if the similarity is too low, ignore the column
-        if similarity < min_similarity: continue
+        if similarity < params.get('min_similarity_column', 0.25): continue
         # find the column that is most similar to the example column
         output_dataframe.loc[:,example_col_name] = dataframe.loc[:,col_name]
         # drop index from the similarities
