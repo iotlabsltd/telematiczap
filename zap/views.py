@@ -19,7 +19,7 @@ from django.views.generic.base import TemplateView
 from .forms import HomeForm, UserRegisterForm, UserLoginForm
 from django.urls import reverse_lazy
 from rest_framework.permissions import IsAuthenticated
-from transformer.transform import transform
+from transformer import TelematicZapTransformer
 from rest_framework import filters
 from .models import User, DataBefore, DataAfter, DataFormat, DataFormatClues
 from .serializers import DataBeforeSerializer, DataAfterSerializer, DataFormatSerializer, DataFormatCluesSerializer
@@ -48,8 +48,10 @@ class HomeFormView(FormView):
             tmp_output_filename = 'data_after.'+data_format_type
             tmp_output_path = '/tmp/'+tmp_output_filename
             # transform
-            transform(input_file=data_before_path, output_file=tmp_output_path, 
-                      output_example_file=data_format_path, limit_rows=100)
+            model = TelematicZapTransformer()
+            model.transform_from_file(
+                input_file=data_before_path, output_file=tmp_output_path, 
+                output_example_file=data_format_path, limit_rows=100)
             # get data after
             with open(tmp_output_path, 'r') as f:
                 file_data = f.read()

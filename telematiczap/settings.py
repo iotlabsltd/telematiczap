@@ -172,7 +172,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'TelematicZap API Docs',
+    'TITLE': 'TelematicZap API Documentation',
     'DESCRIPTION': 'API documentation for the TelematicZap service.',
     'VERSION': '1.0.0',
     'COMPONENT_SPLIT_PATCH': False,
