@@ -5,11 +5,41 @@ import numpy as np
 from .similarity import similarity_str, similarity_columns
 from .parse import is_column_text, is_column_numeric, is_time, is_date, count_columns_with_dates
 from datetime import time
-import re
+import geopy
+
+
+def find_location(address: str, geolocator=None):    
+    geolocator = geopy.ArcGIS() if geolocator is None else geolocator
+    location = geolocator.geocode(address)
+    try:
+        return (location.latitude, location.longitude)
+    except AttributeError:
+        return (np.nan, np.nan)
+
+def find_address(latitude: float, longitude: float, geolocator=None):    
+    geolocator = geopy.ArcGIS() if geolocator is None else geolocator
+    location = geolocator.geocode(f"{latitude}, {longitude}")
+    try:
+        return location.address
+    except AttributeError:
+        return ''
+
+def find_location_columns(addresses: pd.Series):
+    return pd.DataFrame(
+        [find_location(address) for address in addresses], 
+        columns=['latitude', 'longitude'], index=addresses.index
+    )
+
+def find_address_column(latitudes: pd.Series, longitudes: pd.Series):
+    return pd.Series(
+        [find_address(latitude, longitude) for latitude, longitude in zip(latitudes, longitudes)],
+        index=latitudes.index, name='address'
+    )
 
 
 
-def find_text_columns(dataframe: pd.DataFrame) -> list:
+
+def find_text_columns(dataframe: pd.DataFrame, params={}) -> list:
     """
     Find text columns in a dataframe.
 
@@ -19,12 +49,16 @@ def find_text_columns(dataframe: pd.DataFrame) -> list:
     Returns:
         list: a list of column names with text
     """
-    return [x for x in dataframe.columns if is_column_text(dataframe[x])]
+    return [
+        x 
+        for x in dataframe.columns 
+        if is_column_text(dataframe[x], params=params)
+    ]
 
 
 
 
-def find_column(dataframe: pd.DataFrame, example_column: pd.Series, min_similarity=0.25, rename=True) -> pd.Series:
+def find_column(dataframe: pd.DataFrame, example_column: pd.Series, params={}, rename=True) -> pd.Series:
     """
     Return the column from the dataframe that is most similar to the example
     
