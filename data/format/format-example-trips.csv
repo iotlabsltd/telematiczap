@@ -1,0 +1,3 @@
+external_id,vehicle_external_id,started_at,ended_at,start_location_address,end_location_address,start_location_lon,start_location_lat,end_location_lon,end_location_lat,distance
+602624a6-34c7-4221-b7e1-b333c7e78c69,e05053f8-356a-4fbd-b35e-3ac3c1b60947,2020-05-27T17:30:34.529Z,2020-05-27T18:30:34.529Z,Szombathelyi utca 190. H-9018 Érd,Petőfi utca 198. H-4781 keresztnémeti,20.16057649906711,49.49344465320568,20.16057649906711,49.49344465320568,234.5
+43d2d41a-0219-44c0-9cdb-6c752051dc05,44e30a3b-2172-47b9-bc2b-d7aaccdf2dbd,2020-05-27T17:30:34.529Z,2020-05-27T18:30:34.529Z,Petőfi utca 198. H-4781 keresztnémeti,Bajai utca 236. H-5849 Dunaújváros,20.16057649906711,49.49344465320568,20.16057649906711,49.49344465320568,105.432

@@ -1,0 +1,298 @@
+start_location_address,end_location_address,start_location_lat,started_at,distance,ended_at,end_location_lon,start_location_lon,end_location_lat,external_id,vehicle_external_id
+"Nyíregyházai street 85.
+H-9615 wilderness castle","Kunhídi utca 65.
+H-6439 nagyszékvár",,2020-11-27 07:39:53,72.73265471918373,2020-11-27 08:51:05,,,,2,SFT-956
+"Mártonkövesdi utca 176.
+H-3549 Szolnok","Szabadság utca 226.
+H-3646 Pécs",,2020-07-06 16:23:10,44.07911920626364,2020-07-06 16:41:48,,,,7,DCT-503
+"Mártonvári utca 123.
+H-8323 bathfish","Kecskeméti utca 116.
+H-5234 Érd",,2020-11-13 05:53:15,70.58073834269517,2020-11-13 06:50:35,,,,9,DCT-503
+"Szigetszentmiklósi street 53.
+Tamásifalu H-6119","Béke utca 1.
+H-7072 hídapáti",,2020-11-22 06:39:44,72.84937371041704,2020-11-22 07:29:27,,,,11,QNB-570
+"Petőfi sándor tér 80.
+H-1968 Uncle George","Szolnoki tér 168.
+H-1120 magyarszékvárad",,2020-11-25 17:46:12,41.012574291307295,2020-11-25 18:07:07,,,,15,VJC-349
+"Hódmezővásárhelyi utca 88.
+Tamásberény H-9327","József attila utca 125.
+H-6263 tamásikőrös",,2020-11-30 06:53:48,12.24744871391589,2020-11-30 06:57:45,,,,20,TND-179
+"Dunaszéki utca 20.
+H-2013 is seventy","Borsodtamásii út 210.
+H-5828 Békéscsaba",,2020-11-04 06:50:47,26.457513110645905,2020-11-04 07:06:20,,,,23,JYN-690
+"Szegedi utca 64.
+H-8331 Mosonmagyaróvár","Szabadság utca 249.
+H-5994 Ózd",,2020-11-07 15:32:19,56.00641704304963,2020-11-07 15:54:55,,,,25,VJC-349
+"Hetvenkövesdi utca 146.
+H-9165 Borsodmindszentváros","Tapolcanádasdi utca 110.
+H-3477 Budapest",,2020-11-09 14:59:03,20.49199538844375,2020-11-09 15:08:00,,,,28,JYN-690
+"Kuntamásii street 72.
+House of H-3013","József attila út 86.
+H-6381 hídkőrös",,2020-11-20 08:51:07,78.4219357067906,2020-11-20 09:53:00,,,,30,ONR-634
+"Arany jános utca 37.
+H-2804 bathing castle","Magyarháti utca 90.
+H-5250 melléknádasd",,2020-11-21 05:40:50,59.49781705554415,2020-11-21 06:20:08,,,,31,XIA-948
+"Újligeti utca 179.
+H-7659 in Salgótarján","Veszprémi utca 138.
+H-5452 Mosonmagyaróvár",,2020-11-14 17:35:50,66.69367942316573,2020-11-14 18:18:49,,,,35,VJC-349
+"Nagykanizsai út 181.
+H-6257 Balatonmártonvára","Kereszthalasi tér 191.
+H-1251 Mosonmagyaróvár",,2020-11-27 20:20:53,31.303079920352882,2020-11-27 20:35:08,,,,36,SFT-956
+"Ligetbányai Square 58.
+H-5181 grate marrow","Tapolcaberényi út 136.
+H-4895 fürdőhalas",,2020-11-13 08:59:25,10.950884667459519,2020-11-13 09:06:10,,,,43,SFT-956
+"Szombathelyi utca 183.
+H-3300 German bridge","Dunakeszii utca 96.
+H-2427 hajdútapolcaberény",,2020-11-04 18:16:01,7.629097259833564,2020-11-04 18:18:00,,,,48,VJC-349
+"Mátramártoni út 92.
+H-7787 St. Everything","Pécsi utca 14.
+H-3021 keresztfalu",,2020-11-20 08:00:23,5.0775240028974755,2020-11-20 08:04:58,,,,49,QNB-570
+"Kecskeméti utca 187.
+H-4547 back village","Hódmezővásárhelyi utca 1.
+H-4413 belsőmellékháza",,2020-11-04 17:07:56,28.83140648667699,2020-11-04 17:16:49,,,,51,VJC-349
+"Váckereszti utca 134.
+H-7016 Mátramindszentvárad","Szabadság utca 72.
+H-4850 Kecskemét",,2020-11-23 14:14:07,6.327642728536434,2020-11-23 14:15:16,,,,55,TND-179
+"Soproni utca 202.
+H-3969 tapapcaapáti","Lajosfürdői utca 133.
+H-3333 hídnémeti",,2020-11-06 15:56:02,49.164901098242844,2020-11-06 16:31:03,,,,60,DCT-503
+"Dózsa györgy út 131.
+H-8159 All Saints Castle","Belsői utca 16.
+H-9244 Veszprém",,2020-11-05 20:04:17,70.5696685906913,2020-11-05 21:10:04,,,,63,TND-179
+"Kecskemét promenade 123.
+H-5607 Nagykanizsa","Hetvennémetii út 166.
+H-6384 Békéscsaba",,2020-11-14 15:35:57,49.79940229309986,2020-11-14 16:15:49,,,,75,ONR-634
+"Mosonmagyaróvári utca 186.
+H-3418 kuntamásiharaszti","Ligetberényi utca 196.
+H-2596 kuntamásiháza",,2020-11-20 07:39:50,55.49669190591453,2020-11-20 08:24:41,,,,76,TND-179
+"Budapesti utca 1.
+H-7601 Érd","Kunligeti utca 47.
+H-4931 belsőfa",,2020-11-27 10:44:36,16.429299285118645,2020-11-27 10:54:46,,,,80,JYN-690
+"Tapolcaházai utca 137.
+H-9125 to Buda","Szegedi utca 155.
+H-7035 borsodhetvenvárad",,2020-11-04 14:57:22,48.37193142722337,2020-11-04 15:34:41,,,,83,TND-179
+"József attila utca 89.
+H-3757 Dunakeszi","Soproni utca 36.
+H-4391 fürdőkövesd",,2020-11-07 16:00:09,86.05957239029253,2020-11-07 16:55:23,,,,85,VJC-349
+"Back Square 157.
+H-7245 side castle","Székberényi utca 227.
+H-8903 dunagyörgyharaszti",,2020-11-01 14:46:58,8.94863816454772,2020-11-01 14:52:48,,,,86,JYN-690
+"Takarna utca 86.
+H-6845 Pécs","Végi utca 73.
+H-2554 nyírgyörgyfalva",,2020-11-09 12:44:52,6.25,2020-11-09 12:47:41,,,,92,VJC-349
+"Németii utca 52.
+H-1043 Russian German","Ligetvégi út 241.
+H-1367 Kaposvár",,2020-11-26 06:10:51,61.77390731530587,2020-11-26 06:55:42,,,,99,DCT-503
+Szombathelyi utca 190. H-9018 Érd,Petőfi utca 198. H-4781 keresztnémeti,,2020-07-10 13:03:18,9.48889153168061,2020-07-10 13:05:35,,,,1,ONR-634
+"Miskolci utca 220.
+H-8755 Vac","József attila út 4.
+H-9017 Szeged",,2020-07-13 15:33:03,44.03478738452134,2020-07-13 15:51:11,,,,4,DCT-503
+"József attila utca 229.
+H-3752 Győr","Kereszthalasi tér 214.
+H-2796 Szigetszentmiklós",,2020-07-26 11:20:05,59.07655256106267,2020-07-26 11:58:32,,,,5,ONR-634
+"Béke utca 99.
+H-7392 Holy Side Reed","Dózsa györgy utca 69.
+H-2236 mártonhida",,2020-07-27 11:57:18,10.0,2020-07-27 12:01:12,,,,10,JYN-690
+"Drávamelléki utca 89.
+H-6332 Vac","Egeri utca 45.
+H-8803 mindszenthalas",,2020-07-11 11:28:33,58.949130612757976,2020-07-11 12:06:42,,,,16,DCT-503
+"Arany jános utca 130.
+H-7027 Vac","Nyékszéki tér 130.
+H-7684 Dunaújváros",,2020-07-06 06:41:57,31.856612343436645,2020-07-06 06:51:21,,,,26,VJC-349
+"Rácszéki utca 21.
+H-9472 upper bath reed","Petőfi sándor utca 147.
+H-3082 újkőrös",,2020-07-02 14:41:20,44.721359549995796,2020-07-02 15:03:03,,,,32,SFT-956
+"Hajdúszéki utca 2.
+H-1562 Szombathely","Kossuth út 27.
+H-4857 Békéscsaba",,2020-07-28 00:36:39,21.68218594837707,2020-07-28 00:49:01,,,,37,JYN-690
+"Szolnoki tér 175.
+H-1827 inner shelf village","Ady endre utca 208.
+H-7573 mindszentvár",,2020-07-10 18:04:53,5.466517401417469,2020-07-10 18:05:55,,,,38,SFT-956
+"Hajdúi utca 223.
+H-5412 Békésmindszentvár","Mártonnémetii utca 146.
+H-3228 némethídharaszti",,2020-07-27 06:38:48,51.5748091368257,2020-07-27 07:07:02,,,,47,TND-179
+"Debreceni utca 49.
+H-9254 is all about St. Petersburg","Szolnoki utca 238.
+H-1380 mellékharaszti",,2020-07-14 11:22:12,32.113081446662825,2020-07-14 11:41:57,,,,54,VJC-349
+"Dózsa györgy utca 2.
+H-7874 grove village","Budahídi utca 238.
+H-2636 hetvenvára",,2020-07-12 13:11:11,23.30168985288406,2020-07-12 13:15:59,,,,65,VJC-349
+"Hetvenvári utca 167.
+H-8896 Székesfehérvár","Egeri tér 43.
+H-5800 nyírhetvenberény",,2020-07-03 11:01:27,65.1920240520265,2020-07-03 11:34:45,,,,68,ONR-634
+"Györgyvárosi utca 129.
+H-6841 Ózd","Budafürdői út 181.
+H-8403 hátvég",,2020-07-19 06:08:24,44.64267857107143,2020-07-19 06:41:28,,,,70,DCT-503
+"Oroszszéki utca 176.
+H-6245 is waiting for you","Petőfi utca 90.
+H-7085 Baja",,2020-07-31 07:21:33,36.742346141747674,2020-07-31 07:38:17,,,,78,DPM-001
+"Hetvenvári út 157.
+H-3097 tapolcanádasd","Miskolci utca 6.
+H-3547 nagytótvárad",,2020-07-11 18:08:08,20.0,2020-07-11 18:13:45,,,,94,ONR-634
+"Ady endre utca 218.
+H-9105 dunator","Tótfalvai utca 37.
+H-5140 drávafürdőkőrös",,2020-07-23 05:49:56,74.83314773547883,2020-07-23 06:44:15,,,,98,XIA-948
+"József attila utca 170.
+H-7243 new bath castle","Dunafürdői utca 54.
+H-8286 Debrecen",,2020-05-14 17:22:13,27.929878714380415,2020-05-14 17:34:51,,,,3,SFT-956
+"Béke utca 189.
+H-1054 cross village","Györgyvégi utca 246.
+H-8896 egyházashetvennémeti",,2020-05-01 11:05:42,58.135079771167426,2020-05-01 11:42:03,,,,6,VJC-349
+Bajai utca 236. H-5849 Dunaújváros,"Mártondevecseri utca 118.
+H-2495 hetvenvárad",,2020-05-16 07:51:58,4.4737603031454425,2020-05-16 07:53:22,,,,8,ONR-634
+"József attila utca 20.
+H-4154 pepper cross end","Váci út 51.
+H-4159 tapolcakövesd",,2020-05-03 16:59:11,21.91068517869763,2020-05-03 17:06:41,,,,12,SFT-956
+"Hódmezővásárhelyi út 166.
+H-5097 lower grove house","Drávatapolcai út 169.
+H-1052 Zalaegerszeg",,2020-05-18 14:30:51,27.414640249326638,2020-05-18 14:42:59,,,,13,QNB-570
+"Székharasztii utca 160.
+H-9351 German stone","Dunaligeti utca 209.
+H-4108 mosonmindszentdevecser",,2020-05-30 10:47:14,69.20869706908229,2020-05-30 11:34:18,,,,17,TND-179
+"Hetvenkőrösi utca 233.
+Bath mine H-2508","Belsőmártoni utca 243.
+H-1340 hetvendevecser",,2020-05-30 16:29:12,38.6995639510318,2020-05-30 16:59:39,,,,19,QNB-570
+"Szolnoki tér 168.
+H-1120 Hungarian headquarters","Petőfi sándor tér 80.
+H-1968 bácsgyörgyberény",,2020-05-28 08:58:03,5.896238207535377,2020-05-28 09:02:56,,,,21,QNB-570
+"Budapesti út 89.
+H-6077 Baja","Kecskeméti utca 7.
+H-9877 dunahátvára",,2020-05-15 16:18:54,10.734727523323542,2020-05-15 16:23:55,,,,27,VJC-349
+"Lajostóti utca 224.
+H-3889 Nagykanizsa","József attila út 229.
+H-1021 Békéscsaba",,2020-04-19 13:10:18,5.484352742120077,2020-04-19 13:11:30,,,,33,SFT-956
+"Petőfi sándor utca 141.
+H-8108 Szigetszentmiklós","Fürdőváradi utca 100.
+H-9972 nyékgyörgydevecser",,2020-05-16 06:03:59,67.0820393249937,2020-05-16 07:02:22,,,,34,TND-179
+"Bácsmindszenti utca 84.
+Follow H-1121","Székkövesdi utca 54.
+H-3248 nagytapolcabánya",,2020-05-07 08:25:29,42.66283145197937,2020-05-07 08:52:15,,,,39,SFT-956
+"Dózsa györgy utca 91.
+H-3828 Sopron","Hetvenhalasi utca 111.
+H-9758 szenttapolcakőrös",,2020-05-08 11:21:03,40.974458507709414,2020-05-08 11:36:20,,,,40,VJC-349
+"Ligetfalui utca 209.
+Follow H-1451 Church Week","Tótvárosi utca 225.
+H-3771 hetvenharaszti",,2020-05-25 09:42:24,43.81914179328482,2020-05-25 10:05:25,,,,44,TND-179
+"Rácmártoni tér 15.
+H-1134 Eger","Tapolcaváradi utca 126.
+H-9936 kismellékvár",,2020-05-14 10:01:59,83.24650424342154,2020-05-14 10:53:32,,,,50,DPM-001
+"József attila utca 43.
+H-5749 Nyíregyháza","Lajosszéki tér 118.
+H-7317 magyartamásiháza",,2020-05-04 19:50:38,16.606662819483027,2020-05-04 19:56:15,,,,62,VJC-349
+"Kecskeméti utca 187.
+H-6666 Nyíregyháza","Ligetnémetii tér 124.
+H-1720 orosztamásifa",,2020-05-16 14:24:56,9.478594305064439,2020-05-16 14:27:38,,,,64,SFT-956
+"Ligetfalvai utca 250.
+H-6984 tamásiharaszti","Miskolci tér 18.
+H-5664 Kaposvár",,2020-05-06 18:12:38,47.18232587526817,2020-05-06 18:47:05,,,,71,VJC-349
+"Szabadság utca 232.
+H-8841 All Saints","Dózsa györgy utca 5.
+H-2202 Békéscsaba",,2020-05-28 10:42:03,29.325090579570254,2020-05-28 10:59:31,,,,74,TND-179
+"Szentgyörgyi utca 188.
+H-2117 chair village","Hetvendevecseri tér 123.
+H-4190 kunmellékharaszti",,2020-05-29 06:37:11,72.11102550927978,2020-05-29 07:33:42,,,,77,ONR-634
+"Hetvenapátii tér 141.
+H-8312 field grove","Magyarmelléki tér 166.
+H-4473 alsómártonhalas",,2020-05-02 12:13:31,23.873036568480348,2020-05-02 12:21:32,,,,82,ONR-634
+"Dózsa györgy tér 168.
+H-2813 Békéscsaba","Szombathelyi utca 186.
+H-2698 ráchetvenhalas",,2020-05-30 15:03:02,74.29749112520557,2020-05-30 15:45:15,,,,84,SFT-956
+"Dózsa györgy utca 199.
+H-3092 ecclesiastical crossroads","Mezőháti utca 120.
+H-5243 tapolcahida",,2020-05-24 20:54:26,47.198881077839125,2020-05-24 21:11:57,,,,88,VJC-349
+"Töröktapolcai utca 11.
+H-5356 peaceful end","Szolnoki utca 249.
+H-3744 Debrecen",,2020-05-24 09:06:49,52.87810274584367,2020-05-24 09:26:15,,,,89,VJC-349
+"Bácsszéki tér 36.
+H-7592 Mártonvárad","Petőfi utca 101.
+H-4822 tamásivár",,2020-05-12 09:34:16,31.862742741327214,2020-05-12 10:27:53,,,,90,VJC-349
+"Hídbányai utca 129.
+H-8667 side abbot","Németgyörgyi utca 215.
+H-5825 bakonytamásifalva",,2020-05-03 06:10:14,18.440148114914912,2020-05-03 06:15:40,,,,96,SFT-956
+"Salgótarjáni utca 158.
+H-6980 Ozd","Mártonharasztii utca 208.
+H-1251 keresztfalva",,2020-05-07 09:14:04,9.48889153168061,2020-05-07 09:16:59,,,,100,SFT-956
+"Egyházasi utca 29.
+H-9426 Kismindszentvár","Györgyházai tér 101.
+H-6670 Nagykanizsa",,2020-04-11 12:09:12,60.99156255684059,2020-04-11 12:39:25,,,,14,ONR-634
+"Tapolcaapátii utca 61.
+H-1921 seventy halas","Mosonmagyaróvári utca 71.
+H-8425 borsodfürdőkövesd",,2020-04-15 19:59:21,39.205986468905486,2020-04-15 20:18:28,,,,18,QNB-570
+"Györgyfalvai utca 113.
+H-9142 marton bridge","Ceglédi utca 210.
+H-1371 Mosonmagyaróvár",,2020-04-16 08:33:55,10.0,2020-04-16 08:38:02,,,,22,SFT-956
+"Béke utca 74.
+H-6820 in Salgótarján","Szentmelléki utca 46.
+H-3890 Dunakeszi",,2020-04-24 06:05:15,65.57438524302,2020-04-24 06:49:21,,,,24,DPM-001
+"Kecskeméti utca 116.
+H-5234 Érd","Mártonvári utca 123.
+H-8323 fürdőhalas",,2020-04-29 15:34:53,17.71078414413094,2020-04-29 15:40:25,,,,29,VJC-349
+"Mátramindszenti Square 206.
+H-2465 Székesfehérvár","Szabadság út 219.
+H-2086 belsőszékbánya",,2020-04-25 15:29:26,78.04996396539848,2020-04-25 16:51:08,,,,41,DCT-503
+"Hetvenfai utca 111.
+H-3890 upper bath village","Alsóhídi utca 179.
+H-6300 tamásifa",,2020-04-18 13:46:29,17.309228030157787,2020-04-18 13:53:43,,,,42,VJC-349
+"Dunakeszii utca 43.
+H-2377 Baja","Hídházai utca 141.
+H-4158 mindszentkövesd",,2020-04-06 13:48:00,39.51364479518436,2020-04-06 14:00:41,,,,45,QNB-570
+"Hetvenvárosi út 66.
+H-2866 Györgyharaszti","Mátragyörgyi utca 126.
+H-9638 székbánya",,2020-04-24 14:57:07,41.53311931459037,2020-04-24 15:18:51,,,,46,DCT-503
+"Petőfi sándor utca 168.
+H-9532 Hajdútamásinádas","Béke utca 119.
+H-4298 mellékfalva",,2020-04-05 15:12:18,43.96820584240389,2020-04-05 15:32:19,,,,52,VJC-349
+"Győri utca 77.
+H-9622 by-catch","Budapesti utca 240.
+H-6415 pusztaszékvár",,2020-04-24 12:11:20,13.785465625070486,2020-04-24 12:19:16,,,,53,SFT-956
+"Töröktapolcai utca 78.
+End of H-8083","Dunaújvárosi utca 111.
+H-7282 tamásifalva",,2020-04-11 13:17:10,20.14595182660775,2020-04-11 13:32:54,,,,56,VJC-349
+"Hetvenvárai Square 162.
+H-4198 Békéscsaba","Szabadság utca 174.
+H-1934 Dunakeszi",,2020-04-12 10:06:31,71.13374561785005,2020-04-12 10:39:15,,,,57,ONR-634
+"Mártonváradi utca 52.
+H-5907 is waiting for you","Hídhidai utca 25.
+H-1928 alsómártonváros",,2020-04-24 14:48:32,18.006075363609916,2020-04-24 14:56:39,,,,58,VJC-349
+"Dunakeszii utca 159.
+H-4960 Kaposvár","Bakonyhetveni utca 139.
+H-5049 töröktamásivára",,2020-04-26 06:35:57,87.40619972290295,2020-04-26 08:35:25,,,,59,TND-179
+"Takarna utca 86.
+H-6845 Pécs","Végi utca 73.
+H-2554 nyírgyörgyfalva",,2020-04-10 06:37:59,65.57438524302,2020-04-10 07:45:18,,,,61,ONR-634
+"Arany jános utca 159.
+H-3507 in Salgótarján","Borsodkereszti utca 73.
+H-5555 Salgótarján",,2020-05-14 08:13:59,4.485218779502288,2020-05-14 08:15:05,,,,66,TND-179
+"Békéscsabai utca 4.
+H-6263 side abbot","Békéstapolcai utca 12.
+H-2786 pilisszékberény",,2020-04-12 08:42:15,13.778379803155376,2020-04-12 08:49:47,,,,67,SFT-956
+"Petőfi sándor utca 109.
+H-9099 all saintfish","Törökháti utca 103.
+H-8728 Debrecen",,2020-04-11 10:44:02,6.218671481916375,2020-04-11 10:50:20,,,,69,QNB-570
+"Dózsa györgy utca 105.
+H-5101 Russian bath castle","Miskolci utca 247.
+H-2274 magyarhídháza",,2020-04-24 10:57:16,42.06579667615961,2020-04-24 11:12:34,,,,72,QNB-570
+"Budai utca 26.
+H-7758 is a city of peaceful shelves","Szegedi utca 128.
+H-3086 Érd",,2020-04-24 17:19:51,14.142135623730951,2020-04-24 17:34:55,,,,73,JYN-690
+"Székapátii utca 19.
+H-8771 hetvenhida","Petőfi sándor utca 113.
+H-6853 Dunakeszi",,2020-04-23 16:29:56,40.24825306767984,2020-04-23 17:02:36,,,,79,DPM-001
+"Petőfi sándor utca 113.
+H-9111 tamásiharaszti","Petőfi sándor utca 183.
+H-3477 Győr",,2020-04-20 15:36:24,19.71476286948438,2020-04-20 16:02:19,,,,81,QNB-570
+"Hídkőrösi utca 48.
+H-4182 Érd","Kossuth utca 168.
+H-7797 bakonyhídfa",,2020-05-14 16:32:34,71.34450968715112,2020-05-14 17:32:37,,,,87,TND-179
+"Györgyvégi utca 7.
+H-5574 lake bridge","Dózsa györgy utca 8.
+H-9498 Sopron",,2020-04-03 06:05:15,14.493398281631539,2020-04-03 06:11:52,,,,91,TND-179
+"Mezőhídi utca 70.
+H-3853 peppermint bridge","Széknádasdi utca 246.
+H-2811 tapolcaháza",,2020-04-10 11:49:27,49.69830857282771,2020-04-10 12:49:11,,,,93,SFT-956
+"Béke utca 53.
+Bridge end H-5263","Székesfehérvári út 37.
+H-2598 nagyháthalas",,2020-04-17 18:04:42,21.448976519871525,2020-04-17 18:22:37,,,,95,JYN-690
+"Tapolcafalvai utca 189.
+H-5535 Hódmezővásárhely","Budatapolcai utca 136.
+H-1744 keresztvárad",,2020-04-25 16:03:04,56.30249286776741,2020-04-25 16:53:17,,,,97,ONR-634
