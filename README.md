@@ -81,7 +81,7 @@ You are now ready to make requests to TelematicZap on behalf of a user.
 ```
 curl \
     -H "Authorization: Bearer <ACCESS-TOKEN>" \
-    -X GET http://localhost:8000/api/hello
+    -X GET http://localhost:8000/data-format/
 ```
 
   
