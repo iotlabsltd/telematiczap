@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 from .similarity import similarity_str, similarity_columns, is_column_text, is_time, is_date, count_columns_with_dates
+from .io import parse_datetime_column
 from datetime import time
 import geopy
 
@@ -139,6 +140,8 @@ def find_dataframe(dataframe: pd.DataFrame, example_dataframe: pd.DataFrame, par
             similarities = similarities.drop(index=col_name)
         # if the datatype is a time (datetime, timestamp, datetime.time or timedelta)
         if is_date(example_col, params=params) and is_time(example_col, params=params) and is_date(similar_col, params=params) and not is_time(similar_col, params=params):
+            # make sure example_col is a datetime
+            example_col = parse_datetime_column(example_col)
             # look for missing time column
             time_col_missing = find_column(dataframe[similarities.index], example_col.dt.time, params=params, rename=False)
             if time_col_missing is not None:
